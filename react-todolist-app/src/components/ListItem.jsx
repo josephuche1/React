@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 
 function ListItem(props){
+    const [isDone, setIsDone] = useState(false);
+
+    
+    function handleClick(){
+        setIsDone((isDone) => {
+            return !isDone;
+        });
+    }
+    
     return (
-        <li>{props.item}</li>
+        <li style={{textDecoration: isDone && "line-through"}} onClick={handleClick}>{props.item}</li>
     );
 }
 
