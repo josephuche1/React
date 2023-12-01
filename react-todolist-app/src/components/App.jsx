@@ -24,14 +24,16 @@ function App() {
       event.preventDefault();
   }
 
-  function createItems(item){
-    return (
-        <ListItem 
-            key={item.id}
-            item={item.item}
-        />
-    );
-}
+  function deleteItem(id){
+    setItems((items) => {
+        
+         return items.filter((item, index) => {
+             return index !== id;
+         });
+        
+    });
+    console.log(items);
+  }
 
 
 
@@ -48,7 +50,16 @@ function App() {
       </form>
       <div>
         <ul>
-          {items.map(createItems)}
+          {items.map((item, index) => {
+            return (
+               <ListItem 
+                    key={index}
+                    id={index}
+                    item={item.item}
+                    onChecked={deleteItem}
+           />
+          );
+          })}
         </ul>
       </div>
     </div>
