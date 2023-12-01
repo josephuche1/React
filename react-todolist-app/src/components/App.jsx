@@ -2,15 +2,6 @@ import React, {useState} from "react";
 import ListItem from "./ListItem";
 
 
-function createItems(item){
-    return (
-        <ListItem 
-            key={item.id}
-            item={item.item}
-        />
-    );
-}
-
 function App() {
 
   const [item, setItem] = useState("");
@@ -32,6 +23,15 @@ function App() {
       setItem("");
       event.preventDefault();
   }
+
+  function createItems(item){
+    return (
+        <ListItem 
+            key={item.id}
+            item={item.item}
+        />
+    );
+}
 
 
 
